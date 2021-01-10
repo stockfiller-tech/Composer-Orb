@@ -7,8 +7,7 @@ executors:
         resource_class: small
 
 orbs:
-    # Replace this with your own!
-    <orb-name>: stockfiller/composer@<<pipeline.parameters.dev-orb-version>>
+    composer: stockfiller/composer@<<pipeline.parameters.dev-orb-version>>
     orb-tools: circleci/orb-tools@10.0
     bats: circleci/bats@1.0
     shellcheck: circleci/shellcheck@2.0
@@ -29,7 +28,7 @@ parameters:
 
 jobs:
     integration-test:
-        executor: "default"
+        executor: default
         steps:
             - checkout
             - composer/install:
