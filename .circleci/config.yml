@@ -50,7 +50,8 @@ workflows:
             - orb-tools/lint
             - orb-tools/pack
             - shellcheck/check
-      - integration-test
+      - integration-test:
+          requires: [ orb-tools/publish-dev ]
 
   integration-test_deploy:
     when: << pipeline.parameters.run-integration-tests >>
