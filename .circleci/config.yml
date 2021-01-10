@@ -29,7 +29,7 @@ parameters:
 
 jobs:
     integration-test:
-        executor: default
+        executor: "default"
         steps:
             - checkout
             - composer/install:
