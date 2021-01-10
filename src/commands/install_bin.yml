@@ -36,7 +36,7 @@ parameters:
         type: string
         default: ""
 steps:
-    -   run:
+    - run:
             name: Download and install Composer
             environment:
                 PARAM_INSTALL_DIR: << parameters.install-dir >>
