@@ -66,14 +66,14 @@ steps:
       condition: << parameters.cache-version >>
       steps:
         - run:
-            name: Ensure lock file exists
+            name: Ensure Composer lock file exists
             command: |-
               if [ ! -f "<< parameters.working-dir >>/composer.lock" ]; then
                 << parameters.bin >> update --no-interaction --no-install --working-dir=<< parameters.working-dir >>
               fi
         - restore_cache:
             keys:
-              - << parameters.cache-version >>-composer-{{ checksum "composer.lock" }}
+              - << parameters.cache-version >>-composer-{{ checksum "<< parameters.working-dir >>/composer.lock" }}
               - << parameters.cache-version >>-composer
   - run:
       name: Install Composer dependencies
@@ -91,7 +91,7 @@ steps:
       condition: << parameters.cache-version >>
       steps:
         - save_cache:
-            key: << parameters.cache-version >>-composer-{{ checksum "composer.lock" }}
+            key: << parameters.cache-version >>-composer-{{ checksum "<< parameters.working-dir >>/composer.lock" }}
             paths:
               - vendor
               - ~/.composer/cache

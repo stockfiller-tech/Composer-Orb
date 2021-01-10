@@ -62,7 +62,7 @@ workflows:
       - integration-test
       - orb-tools/dev-promote-prod-from-git-tag:
           orb-name: stockfiller/composer
-          context: "orb-publishing"
+          context: orb-publishing
           add-pr-comment: false
           requires:
             - integration-test
