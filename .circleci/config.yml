@@ -99,7 +99,4 @@ workflows:
           filters: *filters
       - deploy:
           requires: [ integration-test ]
-          filters:
-            <<: *filters
-            branches:
-              ignore: /.+/
+          filters: *filters
