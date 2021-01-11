@@ -77,7 +77,7 @@ workflows:
                 - composer
                 - /tmp/composer/composer.phar
               working-dir:
-                - ""
+                - tests
                 - /tmp/source
       - orb-tools/dev-promote-prod-from-git-tag:
           orb-name: stockfiller/composer
