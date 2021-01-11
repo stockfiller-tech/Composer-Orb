@@ -57,8 +57,8 @@ jobs:
     executor: default
     steps:
       - checkout
-      - orb/pack
-      - orb/publish:
+      - orb-tools/pack
+      - orb-tools/publish:
           orb-ref: stockfiller/composer@${CIRCLE_TOKEN}
       - store_artifacts:
           path: orb.yml
