@@ -70,30 +70,9 @@ workflows:
                 path: /tmp/source
           matrix:
             parameters:
-              cache-version:
-                - v1
-                - ""
               classmap-authoritative:
                 - true
                 - false
-              ignore-platform-reqs:
-                - true
-                - false
-              no-dev:
-                - true
-                - false
-              no-scripts:
-                - true
-                - false
-              optimize-autoloader:
-                - true
-                - false
-              prefer-dist:
-                - true
-                - false
-              flags:
-                - ""
-                - --no-cache
               bin:
                 - composer
                 - /tmp/composer/composer.phar
