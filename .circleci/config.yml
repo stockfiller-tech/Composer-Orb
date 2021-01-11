@@ -62,7 +62,7 @@ jobs:
     executor: default
     steps:
       - run:
-          name: Trigger integration test and deploy workflow
+          name: "Trigger integration test and deploy workflow"
           command: >-
             curl --request POST
             --url https://circleci.com/api/v2/project/gh/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pipeline
