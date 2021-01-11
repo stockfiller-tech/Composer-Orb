@@ -27,7 +27,7 @@ usage:
   jobs:
     bar:
       docker:
-        - image: php:7.4
+        - image: cimg/php:7.4
       steps:
         - checkout
         - composer/install_bin

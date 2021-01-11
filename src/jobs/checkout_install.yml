@@ -67,9 +67,10 @@ parameters:
     description: If specified, use the given directory as working directory
     type: string
     default: ""
+executor: << parameters.executor >>
 steps:
   - checkout
-  - composer/install:
+  - install:
       cache-version: << parameters.cache-version >>
       classmap-authoritative: << parameters.classmap-authoritative >>
       ignore-platform-reqs: << parameters.ignore-platform-reqs >>
