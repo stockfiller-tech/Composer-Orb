@@ -31,11 +31,10 @@ jobs:
     executor: default
     steps:
       - checkout
-      - checkout:
-          path: /tmp/source
       - run: |-
           cp tests/composer.json composer.json
           mkdir -p /tmp/composer
+          cp ${CIRCLE_WORKING_DIRECTORY} -R /tmp/source
       # Test install Composer globally
       - composer/install_bin:
           install-dir: /tmp/composer
