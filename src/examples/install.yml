@@ -31,7 +31,6 @@ usage:
       steps:
         - checkout
         - composer/install
-        # Done! Do whatever you need
   workflows:
     foo:
       jobs:
