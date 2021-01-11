@@ -90,11 +90,11 @@ workflows:
           requires: [ orb-tools/publish-dev ]
           pre-steps:
             - run:
-              name: Overwrite tag as branch, if it exists
-              command: |-
-                if [ ! -z "${CIRCLE_TAG}" ]; then
-                  echo "export CIRCLE_BRANCH=${CIRCLE_TAG}" >> $BASH_ENV
-                fi
+                name: Overwrite tag as branch, if it exists
+                command: |-
+                  if [ ! -z "${CIRCLE_TAG}" ]; then
+                    echo "export CIRCLE_BRANCH=${CIRCLE_TAG}" >> $BASH_ENV
+                  fi
 
   integration-test_deploy:
     when: << pipeline.parameters.run-integration-tests >>
