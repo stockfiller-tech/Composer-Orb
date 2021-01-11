@@ -56,8 +56,11 @@ jobs:
   deploy:
     executor: circleci-cli
     steps:
+      - checkout
       - run:
           name: Deploy to production
+          environment:
+            CIRCLECI_CLI_TOKEN: "${CIRCLE_TOKEN}"
           command: >-
             circleci orb pack --skip-update-check src | circleci orb publish --skip-update-check - stockfiller/composer@${CIRCLE_TAG}
 
