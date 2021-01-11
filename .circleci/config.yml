@@ -63,7 +63,7 @@ workflows:
       - composer/checkout_install:
           executor: "default"
           pre-steps:
-            - install_bin:
+            - composer/install_bin:
                 filename: composer.phar
                 install-dir: /tmp/composer
             - checkout:
