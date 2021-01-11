@@ -57,7 +57,7 @@ jobs:
           command: circleci orb pack src > ${ORB_PATH}
       - run:
           name: Deploy orb
-          command: circleci orb publish ${ORB_PATH} stockfiller/composer@${CIRCLE_TOKEN}
+          command: circleci orb publish ${ORB_PATH} stockfiller/composer@${CIRCLE_TAG}
       - store_artifacts:
           path: "${ORB_PATH}"
 
@@ -87,7 +87,6 @@ workflows:
             - shellcheck/check
       - orb-tools/trigger-integration-tests-workflow:
           filters: *filters
-          name: trigger-integration-dev
           context: orb-publishing
           requires: [ orb-tools/publish-dev ]
           pre-steps:
