@@ -57,7 +57,7 @@ jobs:
           command: circleci orb pack src > ${ORB_PATH}
       - run:
           name: Deploy orb
-          command: circleci orb publish ${ORB_PATH} stockfiller/composer@${CIRCLE_TAG}
+          command: circleci orb publish ${ORB_PATH} stockfiller/composer@${CIRCLE_BRANCH}
       - store_artifacts:
           path: "${ORB_PATH}"
 
