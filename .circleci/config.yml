@@ -89,7 +89,7 @@ workflows:
           requires: [ orb-tools/publish-dev ]
           pre-steps:
             - run:
-              name: Use tag or branch
+              name: Overwrite tag as branch, if it exists
               command: |-
                 if [ -z "${CIRCLE_TAG}" ]; then
                   echo "export CIRCLE_BRANCH=${CIRCLE_TAG}" >> $BASH_ENV
