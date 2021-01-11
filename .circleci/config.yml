@@ -49,6 +49,15 @@ jobs:
           cache-version: ""
       # Test default values
       - composer/install
+  deploy:
+    executor: default
+    steps:
+      - checkout
+      - orb-tools/pack
+      - orb-tools/publish:
+          orb-ref: stockfiller/composer@${CIRCLE_TOKEN}
+      - store_artifacts:
+          path: orb.yml
 
 workflows:
   test-pack:
@@ -92,12 +101,10 @@ workflows:
     jobs:
       - integration-test:
           filters: *filters
-      - orb-tools/dev-promote-prod-from-git-tag:
-          orb-name: stockfiller/composer
-          context: orb-publishing
-          add-pr-comment: false
+      - deploy:
+          context: [ orb-publishing ]
           requires: [ integration-test ]
-            #filters:
+          #filters:
           #<<: *filters
           #branches:
           #ignore: /.*/
