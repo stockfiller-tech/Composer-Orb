@@ -34,7 +34,6 @@ jobs:
       - run: |-
           cp tests/composer.json composer.json
           mkdir -p /tmp/composer
-          cp -R . /tmp/source
       # Test install Composer globally
       - composer/install_bin:
           install-dir: /tmp/composer
@@ -42,9 +41,8 @@ jobs:
       - composer/install:
           working-dir: tests
           classmap-authoritative: true
-      # Test working directory and global Composer
+      # Test global Composer
       - composer/install:
-          working-dir: /tmp/source
           bin: /tmp/composer/composer
       # Test disable cache
       - composer/install:
