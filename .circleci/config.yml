@@ -50,14 +50,15 @@ jobs:
     environment:
       CIRCLECI_CLI_TOKEN: "${CIRCLE_TOKEN}"
       ORB_PATH: orb.yml
+      CIRCLE_FLAGS: --skip-update-check
     steps:
       - checkout
       - run:
           name: Pack orb
-          command: circleci orb pack src > ${ORB_PATH}
+          command: circleci orb pack src ${CIRCLE_FLAGS} > ${ORB_PATH}
       - run:
           name: Deploy orb
-          command: circleci orb publish ${ORB_PATH} stockfiller/composer@${CIRCLE_BRANCH}
+          command: circleci orb publish ${ORB_PATH} stockfiller/composer@${CIRCLE_BRANCH} ${CIRCLE_FLAGS}
       - store_artifacts:
           path: "${ORB_PATH}"
 
