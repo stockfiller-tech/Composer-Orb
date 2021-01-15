@@ -71,25 +71,19 @@ steps:
             keys:
               - << parameters.cache-version >>-composer-{{ checksum "<< parameters.working-dir >>/composer.lock" }}
               - << parameters.cache-version >>-composer
-  - unless:
-      condition: << parameters.cache-version >>
-      steps:
-        - run:
-            name: Disable Composer cache
-            command: |-
-              echo 'export NO_CACHE="--no-cache"' >> $BASH_ENV
   - run:
       name: Install Composer dependencies
-      command: >-
-        << parameters.bin >> install --no-interaction
-        <<# parameters.working-dir >> --working-dir=<< parameters.working-dir >> <</ parameters.working-dir >>
-        <<# parameters.prefer-dist >> --prefer-dist <</ parameters.prefer-dist >>
-        <<# parameters.no-scripts >> --no-scripts <</ parameters.no-scripts >>
-        <<# parameters.ignore-platform-reqs >> --ignore-platform-reqs <</ parameters.ignore-platform-reqs >>
-        <<# parameters.no-dev >> --no-dev <</ parameters.no-dev >>
-        <<# parameters.classmap-authoritative >> --classmap-authoritative <</ parameters.classmap-authoritative >>
-        <<# parameters.optimize-autoloader >> --optimize-autoloader <</ parameters.optimize-autoloader >>
-        ${NO_CACHE}
+      environment:
+        PARAM_CACHE_VERSION: << parameters.cache-version >>
+        PARAM_CLASSMAP_AUTHORITATIVE: << parameters.classmap-authoritative >>
+        PARAM_IGNORE_PLATFORM_REQS: << parameters.ignore-platform-reqs >>
+        PARAM_NO_DEV: << parameters.no-dev >>
+        PARAM_NO_SCRIPTS: << parameters.no-scripts >>
+        PARAM_OPTIMIZE_AUTOLOADER: << parameters.optimize-autoloader >>
+        PARAM_PREFER_DIST: << parameters.prefer-dist >>
+        PARAM_BIN: << parameters.bin >>
+        PARAM_WORKING_DIR: << parameters.working-dir >>
+      command: << include(scripts/install.sh) >>
   - when:
       condition: << parameters.cache-version >>
       steps:
