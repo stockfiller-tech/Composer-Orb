@@ -71,6 +71,13 @@ steps:
             keys:
               - << parameters.cache-version >>-composer-{{ checksum "<< parameters.working-dir >>/composer.lock" }}
               - << parameters.cache-version >>-composer
+  - unless:
+      condition: << parameters.cache-version >>
+      steps:
+        - run:
+            name: Export a no cache variable
+            command: |-
+              echo 'export NO_CACHE="--no-cache"' >> $BASH_ENV
   - run:
       name: Install Composer dependencies
       command: >-
@@ -82,6 +89,7 @@ steps:
         <<# parameters.no-dev >> --no-dev <</ parameters.no-dev >>
         <<# parameters.classmap-authoritative >> --classmap-authoritative <</ parameters.classmap-authoritative >>
         <<# parameters.optimize-autoloader >> --optimize-autoloader <</ parameters.optimize-autoloader >>
+        ${NO_CACHE}
   - when:
       condition: << parameters.cache-version >>
       steps:
