@@ -75,7 +75,7 @@ steps:
       condition: << parameters.cache-version >>
       steps:
         - run:
-            name: Export a no cache variable
+            name: Disable Composer cache
             command: |-
               echo 'export NO_CACHE="--no-cache"' >> $BASH_ENV
   - run:
