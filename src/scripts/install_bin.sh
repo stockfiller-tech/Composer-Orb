@@ -50,13 +50,15 @@ else
     VERSION=""
 fi
 
-FLAGS="${FILENAME} ${INSTALL_DIR} ${VERSION}"
-# Strip leading whitespace
-FLAGS="${FLAGS## }"
+echo "Installing Composer with flags: " \
+    "${FILENAME}" \
+    "${INSTALL_DIR}" \
+    "${VERSION}"
 
-echo "Installing Composer with flags \"${FLAGS}\""
-
-php composer-setup.php --quiet "${FLAGS}"
+php composer-setup.php --quiet \
+    "${FILENAME}" \
+    "${INSTALL_DIR}" \
+    "${VERSION}"
 RESULT=$?
 rm composer-setup.php
 exit $RESULT

@@ -70,17 +70,22 @@ else
     CACHE_VERSION=""
 fi
 
-FLAGS="${WORKING_DIR}" \
-    " ${PREFER_DIST}" \
-    " ${NO_SCRIPTS}" \
-    " ${IGNORE_PLATFORM_REQS}" \
-    " ${NO_DEV}" \
-    " ${CLASSMAP_AUTHORITATIVE}" \
-    " ${OPTIMIZE_AUTOLOADER}" \
-    " ${CACHE_VERSION}"
-# Strip leading whitespace
-FLAGS=${FLAGS## }
+echo "Running command \"${PARAM_BIN}\" with flags: " \
+    "${WORKING_DIR}" \
+    "${PREFER_DIST}" \
+    "${NO_SCRIPTS}" \
+    "${IGNORE_PLATFORM_REQS}" \
+    "${NO_DEV}" \
+    "${CLASSMAP_AUTHORITATIVE}" \
+    "${OPTIMIZE_AUTOLOADER}" \
+    "${CACHE_VERSION}"
 
-echo "Running command \"${PARAM_BIN}\" with flags \"${FLAGS}\""
-
-"${PARAM_BIN}" install --no-interaction "${FLAGS}"
+"${PARAM_BIN}" install --no-interaction \
+    "${WORKING_DIR}" \
+    "${PREFER_DIST}" \
+    "${NO_SCRIPTS}" \
+    "${IGNORE_PLATFORM_REQS}" \
+    "${NO_DEV}" \
+    "${CLASSMAP_AUTHORITATIVE}" \
+    "${OPTIMIZE_AUTOLOADER}" \
+    "${CACHE_VERSION}"
