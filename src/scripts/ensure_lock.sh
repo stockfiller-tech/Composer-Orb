@@ -30,10 +30,6 @@ if [ "${PARAM_IGNORE_PLATFORM_REQS}" -eq 1 ]; then
     set -- "$@" "--ignore-platform-reqs"
 fi
 
-if [ -z "${PARAM_CACHE_VERSION}" ]; then
-    set -- "$@" "--no-cache"
-fi
-
 echo "Running command \"${PARAM_BIN} update\" with flags: " "$@"
 
 "${PARAM_BIN}" update --no-interaction --no-install "$@"

@@ -64,7 +64,6 @@ steps:
         - run:
             name: Ensure Composer lock file exists
             environment:
-              PARAM_CACHE_VERSION: << parameters.cache-version >>
               PARAM_IGNORE_PLATFORM_REQS: << parameters.ignore-platform-reqs >>
               PARAM_BIN: << parameters.bin >>
               PARAM_WORKING_DIR: << parameters.working-dir >>
