@@ -80,12 +80,4 @@ echo "Running command \"${PARAM_BIN}\" with flags: " \
     "${OPTIMIZE_AUTOLOADER}" \
     "${CACHE_VERSION}"
 
-"${PARAM_BIN}" install --no-interaction \
-    "${WORKING_DIR}" \
-    "${PREFER_DIST}" \
-    "${NO_SCRIPTS}" \
-    "${IGNORE_PLATFORM_REQS}" \
-    "${NO_DEV}" \
-    "${CLASSMAP_AUTHORITATIVE}" \
-    "${OPTIMIZE_AUTOLOADER}" \
-    "${CACHE_VERSION}"
+"${PARAM_BIN}" install --no-interaction "${WORKING_DIR}" "${PREFER_DIST}" "${NO_SCRIPTS}" "${IGNORE_PLATFORM_REQS}" "${NO_DEV}" "${CLASSMAP_AUTHORITATIVE}" "${OPTIMIZE_AUTOLOADER}" "${CACHE_VERSION}"

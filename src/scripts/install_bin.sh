@@ -55,10 +55,7 @@ echo "Installing Composer with flags: " \
     "${INSTALL_DIR}" \
     "${VERSION}"
 
-php composer-setup.php --quiet \
-    "${FILENAME}" \
-    "${INSTALL_DIR}" \
-    "${VERSION}"
+php composer-setup.php --quiet "${FILENAME}" "${INSTALL_DIR}" "${VERSION}"
 RESULT=$?
 rm composer-setup.php
 exit $RESULT
