@@ -58,6 +58,7 @@ parameters:
     type: string
     default: "."
 steps:
+  - self_update
   - when:
       condition: << parameters.cache-version >>
       steps:
